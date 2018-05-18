@@ -21,6 +21,7 @@
 
 
 module DataMemory(
+    input clk,
     input [31:0] DAddr,
     input [31:0] DataIn,
     input RD,
@@ -42,10 +43,10 @@ module DataMemory(
     // write
     integer i;
     initial begin
-        for(i = 0; i < 128; i=i+1) memory[i] <= 0;
+        for(i = 0; i < 128; i=i+1) memory[i] = 0;
     end
     
-    always @(WR or DAddr or DataIn) begin
+    always @(negedge clk) begin
         if(WR == 0) begin
             address = DAddr << 2;
             memory[address] = DataIn[31:24];

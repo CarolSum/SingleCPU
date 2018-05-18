@@ -49,7 +49,7 @@ module controlUnit(
     assign ExtSel = (opCode == 6'b010000) ? 0 : 1;
     assign PCSrc[1] = (opCode == 6'b111000) ? 1 : 0;
     assign PCSrc[0] = ((opCode == 6'b110000 && zero == 1) || (opCode == 6'b110001 && zero == 0)) ? 1 : 0;
-    assign ALUOp[2] = (opCode == 6'b010001 || opCode == 6'b011011 || opCode == 6'b110000 || opCode == 6'b110001) ? 1 : 0;
+    assign ALUOp[2] = (opCode == 6'b010001 || opCode == 6'b011011) ? 1 : 0;
     assign ALUOp[1] = (opCode == 6'b010000 || opCode == 6'b010010 || opCode == 6'b011000 || opCode == 6'b011011) ? 1 : 0;
     assign ALUOp[0] = (opCode == 6'b000010 || opCode == 6'b010000 || opCode == 6'b010010 || opCode == 6'b110000 || opCode == 6'b110001) ? 1 : 0;
 endmodule

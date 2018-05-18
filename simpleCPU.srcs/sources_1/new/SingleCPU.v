@@ -39,7 +39,7 @@ module SingleCPU(
     
     controlUnit cu(opCode, zero, PCWre, ALUSrcA, ALUSrcB, DBDataSrc, RegWre, InsMemRW, mRD, mWR, RegDst, ExtSel, PCSrc, ALUOp);
     ALU alu(ReadData1, ReadData2, ExtOut, sa, ALUSrcA, ALUSrcB, ALUOp, zero, ALUResult);
-    DataMemory dm(ALUResult, ReadData2, mRD, mWR, DMOut);
+    DataMemory dm(clk, ALUResult, ReadData2, mRD, mWR, DMOut);
     PC pc(clk, Reset, PCWre, PCSrc, immediate, addr, curPC);
     RegFile rf(clk, RegDst, RegWre, DBDataSrc, opCode, rs, rt, rd, reserved, ALUResult, DMOut, ReadData1, ReadData2);
     instructionMemory im(curPC, opCode, rs, rt, rd, reserved, immediate, addr, sa);

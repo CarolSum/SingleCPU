@@ -43,7 +43,7 @@ module instructionMemory(
     end
     
     always @(pc) begin
-        address = pc[5:2] << 2;
+        address = pc[6:2] << 2;
         instruction = (mem[address] << 24) + (mem[address+1] << 16) + (mem[address+2] << 8) + mem[address+3];
     end
     

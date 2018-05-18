@@ -44,11 +44,13 @@ module PC(
                         Address = Address + 4;
                     end
                     2'b01: begin
-                        Address = Address + 4 + immediate << 2;
+                        Address = (Address + 4) + immediate * 4;
                     end
                     2'b10: begin
-                        addressPlus4 = addr + 4;
-                        Address = {addressPlus4[31:28], addr, 0, 0};
+                        addressPlus4 = Address + 4;
+                        Address[31:28] = addressPlus4[31:28];
+                        Address[27:2] = addr;
+                        Address[1:0] = 2'b00;
                     end
                 endcase
             end
