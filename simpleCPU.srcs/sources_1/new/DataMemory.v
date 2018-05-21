@@ -30,7 +30,7 @@ module DataMemory(
     );
     
     reg [7:0] memory[0:127];
-    reg [31:0] address;
+    reg [31:0] address = 0;
     
     // read
     always @(RD) begin
@@ -44,6 +44,7 @@ module DataMemory(
     integer i;
     initial begin
         for(i = 0; i < 128; i=i+1) memory[i] = 0;
+        DataOut = 0;
     end
     
     always @(negedge clk) begin
